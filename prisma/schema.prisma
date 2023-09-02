@@ -16,6 +16,59 @@ model User {
   password    String
   createdAt   DateTime       @default(now())
   updatedAt   DateTime       @updatedAt
+  Credential  Credential[]
+  Note        Note[]
+  Card        Card[]
 
   @@map(name: "users")
+}
+
+model Credential {
+  id          Int            @id @default(autoincrement())        
+  userId      Int 
+  User        User           @relation(fields: [userId], references: [id])
+  title       String
+  url         String
+  user        String
+  password    String
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@map(name: "credentials")
+}
+
+model Note {
+  id          Int            @id @default(autoincrement())        
+  userId      Int 
+  User        User           @relation(fields: [userId], references: [id])
+  title       String
+  description String
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@map(name: "notes")
+}
+
+model Card {
+  id             Int            @id @default(autoincrement())        
+  userId         Int 
+  User           User           @relation(fields: [userId], references: [id])
+  title          String
+  number         Int
+  name           String
+  CVC            Int
+  expirationDate String
+  password       String
+  virtual        Boolean
+  type           CardType
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  @@map(name: "cards")
+}
+
+enum CardType {
+  credito
+  debito
+  ambos
 }
