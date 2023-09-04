@@ -15,7 +15,7 @@ export class CredentialsController {
     return this.credentialsService.create(createCredentialDto);
   }
 
-  @Get(':id')
+  @Get('all/:id')
   findAll(@User() user: UserPayload, @Param('userId') userId: number) {
     return this.credentialsService.findAll(user, userId);
   }
@@ -23,11 +23,6 @@ export class CredentialsController {
   @Get(':id')
   findOne(@User() user: UserPayload, @Param('id') id: string) {
     return this.credentialsService.findOne(user, +id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCredentialDto: UpdateCredentialDto) {
-    return this.credentialsService.update(+id, updateCredentialDto);
   }
 
   @Delete(':id')

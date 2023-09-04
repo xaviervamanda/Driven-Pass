@@ -22,6 +22,9 @@ export class CredentialsService {
   }
 
   async findAll(user: UserPayload, userId: number) {
+    if (!userId){
+      userId = user.id;
+    }
     if (user.id !== userId) {
       throw new ForbiddenException("You are not authorized to access this resource");
     }
@@ -39,10 +42,6 @@ export class CredentialsService {
       throw new ForbiddenException("You are not authorized to access this resource");
     }
     return credential;
-  }
-
-  async update(id: number, updateCredentialDto: UpdateCredentialDto) {
-    return await this.credentialsRepository.update(id, updateCredentialDto);
   }
 
   async remove(user: UserPayload, id: number) {

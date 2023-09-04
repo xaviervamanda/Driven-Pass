@@ -32,13 +32,6 @@ export class CredentialsRepository {
     
   }
 
-  async update(id: number, updateCredentialDto: UpdateCredentialDto) {
-    return await this.prisma.credential.update({
-      where: { id },
-      data: updateCredentialDto
-    });
-  }
-
   async remove(id: number) {
     return await this.prisma.credential.delete({
       where: { id }
