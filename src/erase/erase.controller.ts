@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@n
 import { EraseService } from './erase.service';
 import { CreateEraseDto } from './dto/create-erase.dto';
 import { UpdateEraseDto } from './dto/update-erase.dto';
-import { AuthGuard } from 'src/guards/auth.guard';
+import { AuthGuard } from '../guards/auth.guard';
 
 @Controller('erase')
 @UseGuards(AuthGuard)

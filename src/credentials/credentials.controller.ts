@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Query } from '@nestjs/common';
 import { CredentialsService } from './credentials.service';
 import { CreateCredentialDto } from './dto/create-credential.dto';
 import { UpdateCredentialDto } from './dto/update-credential.dto';
-import { AuthGuard } from 'src/guards/auth.guard';
+import { AuthGuard } from '../guards/auth.guard';
+import { User, UserPayload } from '../decorators/user.decorator';
 
 @Controller('credentials')
 @UseGuards(AuthGuard)
@@ -14,14 +15,14 @@ export class CredentialsController {
     return this.credentialsService.create(createCredentialDto);
   }
 
-  @Get()
-  findAll() {
-    return this.credentialsService.findAll();
+  @Get(':id')
+  findAll(@User() user: UserPayload, @Param('userId') userId: number) {
+    return this.credentialsService.findAll(user, userId);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.credentialsService.findOne(+id);
+  findOne(@User() user: UserPayload, @Param('id') id: string) {
+    return this.credentialsService.findOne(user, +id);
   }
 
   @Patch(':id')
@@ -30,7 +31,7 @@ export class CredentialsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.credentialsService.remove(+id);
+  remove(@User() user: UserPayload, @Param('id') id: string) {
+    return this.credentialsService.remove(user, +id);
   }
 }
