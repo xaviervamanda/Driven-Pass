@@ -15,7 +15,7 @@ export class CredentialsController {
     return this.credentialsService.create(createCredentialDto);
   }
 
-  @Get('all/:id')
+  @Get('all/:userId')
   findAll(@User() user: UserPayload, @Param('userId') userId: number) {
     return this.credentialsService.findAll(user, userId);
   }

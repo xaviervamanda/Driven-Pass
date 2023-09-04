@@ -1,8 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, UseGuards } from '@nestjs/common';
 import { CardsService } from './cards.service';
 import { CreateCardDto } from './dto/create-card.dto';
-import { UpdateCardDto } from './dto/update-card.dto';
 import { AuthGuard } from '../guards/auth.guard';
+import { User, UserPayload } from 'src/decorators/user.decorator';
 
 @Controller('cards')
 @UseGuards(AuthGuard)
@@ -14,23 +14,18 @@ export class CardsController {
     return this.cardsService.create(createCardDto);
   }
 
-  @Get()
-  findAll() {
-    return this.cardsService.findAll();
+  @Get('all/:id')
+  findAll(@User() user: UserPayload, @Param('userId') userId: number) {
+    return this.cardsService.findAll(user, userId);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.cardsService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCardDto: UpdateCardDto) {
-    return this.cardsService.update(+id, updateCardDto);
+  findOne(@User() user: UserPayload, @Param('id') id: string) {
+    return this.cardsService.findOne(user, +id);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.cardsService.remove(+id);
+  remove(@User() user: UserPayload, @Param('id') id: string) {
+    return this.cardsService.remove(user, +id);
   }
 }

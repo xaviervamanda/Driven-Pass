@@ -15,7 +15,7 @@ export class NotesController {
     return this.notesService.create(createNoteDto);
   }
 
-  @Get('all/:id')
+  @Get('all/:userId')
   findAll(@User() user: UserPayload, @Param('userId') userId: number) {
     return this.notesService.findAll(user, userId);
   }

@@ -56,19 +56,13 @@ model Card {
   title          String
   number         Int
   name           String
-  CVC            Int
+  CVC            String
   expirationDate String
   password       String
   virtual        Boolean
-  type           CardType
+  type           String
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
 
   @@map(name: "cards")
-}
-
-enum CardType {
-  credito
-  debito
-  ambos
 }
