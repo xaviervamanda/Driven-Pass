@@ -2,7 +2,7 @@ import { ConflictException, ForbiddenException, Injectable, NotFoundException } 
 import { CreateNoteDto } from './dto/create-note.dto';
 import { UpdateNoteDto } from './dto/update-note.dto';
 import { NotesRepository } from './notes.repository';
-import { UserPayload } from 'src/decorators/user.decorator';
+import { UserPayload } from '../decorators/user.decorator';
 
 @Injectable()
 export class NotesService {

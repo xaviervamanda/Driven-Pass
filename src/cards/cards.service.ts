@@ -2,13 +2,13 @@ import { ConflictException, ForbiddenException, Injectable, NotFoundException } 
 import { CreateCardDto } from './dto/create-card.dto';
 import { CardsRepository } from './cards.repository';
 import Cryptr from 'cryptr';
-import { UserPayload } from 'src/decorators/user.decorator';
+import { UserPayload } from '../decorators/user.decorator';
 
 @Injectable()
 export class CardsService {
-
-  constructor(private readonly cardsRepository: CardsRepository,
-    private readonly cryptr: Cryptr) {
+  private readonly cryptr: Cryptr;
+  constructor(private readonly cardsRepository: CardsRepository) {
+    const Cryptr = require('cryptr');
     this.cryptr = new Cryptr(process.env.CRYPTR_SECRET);
   }
   async create(createCardDto: CreateCardDto) {

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { UpdateNoteDto } from './dto/update-note.dto';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { CreateNoteDto } from './dto/create-note.dto';
 
 @Injectable()

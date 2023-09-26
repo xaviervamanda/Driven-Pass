@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Param, Delete, UseGuards } from '@nestjs/c
 import { CardsService } from './cards.service';
 import { CreateCardDto } from './dto/create-card.dto';
 import { AuthGuard } from '../guards/auth.guard';
-import { User, UserPayload } from 'src/decorators/user.decorator';
+import { User, UserPayload } from '../decorators/user.decorator';
 
 @Controller('cards')
 @UseGuards(AuthGuard)

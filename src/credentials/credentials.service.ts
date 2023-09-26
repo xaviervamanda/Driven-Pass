@@ -1,15 +1,14 @@
 import { ConflictException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateCredentialDto } from './dto/create-credential.dto';
-import { UpdateCredentialDto } from './dto/update-credential.dto';
 import { CredentialsRepository } from './credentials.repository';
 import Cryptr from 'cryptr';
-import { UserPayload } from 'src/decorators/user.decorator';
+import { UserPayload } from '../decorators/user.decorator';
 
 @Injectable()
 export class CredentialsService {
-
-  constructor(private readonly credentialsRepository: CredentialsRepository,
-    private readonly cryptr: Cryptr) {
+  private readonly cryptr: Cryptr;
+  constructor(private readonly credentialsRepository: CredentialsRepository) {
+      const Cryptr = require('cryptr');
       this.cryptr = new Cryptr(process.env.CRYPTR_SECRET);
     }
   async create(createCredentialDto: CreateCredentialDto) {

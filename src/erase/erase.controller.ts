@@ -1,8 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards } from '@nestjs/common';
 import { EraseService } from './erase.service';
 import { AuthGuard } from '../guards/auth.guard';
 import { EraseDto } from './dto/erase.dto';
-import { User, UserPayload } from 'src/decorators/user.decorator';
+import { User, UserPayload } from '../decorators/user.decorator';
 
 @Controller('erase')
 @UseGuards(AuthGuard)
