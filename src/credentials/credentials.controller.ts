@@ -3,7 +3,9 @@ import { CredentialsService } from './credentials.service';
 import { CreateCredentialDto } from './dto/create-credential.dto';
 import { AuthGuard } from '../guards/auth.guard';
 import { User, UserPayload } from '../decorators/user.decorator';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('credentials')
 @Controller('credentials')
 @UseGuards(AuthGuard)
 export class CredentialsController {

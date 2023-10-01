@@ -4,7 +4,9 @@ import { CreateNoteDto } from './dto/create-note.dto';
 import { UpdateNoteDto } from './dto/update-note.dto';
 import { AuthGuard } from '../guards/auth.guard';
 import { User, UserPayload } from '../decorators/user.decorator';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('notes')
 @Controller('notes')
 @UseGuards(AuthGuard)
 export class NotesController {
