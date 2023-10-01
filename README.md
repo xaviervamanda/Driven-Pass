@@ -51,3 +51,9 @@ Check the documentation [here](https://drivenpass-voei.onrender.com/api).
 ## ⚡ Try it now!
 
 Click [here](https://drivenpass-voei.onrender.com/).
+
+## 💡 Main technologies
+
+![NestJS](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=flat&logo=nestjs&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=flat&logo=Prisma&logoColor=white)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=flat&logo=postgresql&logoColor=white)
